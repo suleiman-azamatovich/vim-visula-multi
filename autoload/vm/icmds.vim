@@ -146,9 +146,9 @@ fun! vm#icmds#return() abort
 
         "if carrying over some text, delete it now, for better indentexpr
         "otherwise delete the trailing spaces that would be left at EOL
-        " if !at_eol  | keepjumps normal! d$
-        " else        | keepjumps normal! "_d$
-        " endif
+        if !at_eol  | keepjumps normal! 
+        else        | keepjumps normal! 
+        endif
 
         "append a line and get the indent
         " noautocmd exe "silent keepjumps normal! o\<C-R>=<SID>get_indent()\<CR>"

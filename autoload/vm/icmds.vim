@@ -142,7 +142,7 @@ fun! vm#icmds#return() abort
 
         "we also consider at EOL cursors that have trailing spaces after them
         "if not at EOL, CR will cut the line and carry over the remaining text
-        " let at_eol = match(strpart(rline, r.a-1, len(rline)), '\s*$') == 0
+        let at_eol = match(strpart(rline, r.a-1, len(rline)), '\s*$') == 0
 
         "if carrying over some text, delete it now, for better indentexpr
         "otherwise delete the trailing spaces that would be left at EOL
@@ -190,7 +190,7 @@ fun! vm#icmds#insert_line(above) abort
         call cursor(r.l, r.a)
         " noautocmd exe "silent keepjumps normal!" (a:above ? 'O' : 'o')."\<C-R>=<SID>get_indent()\<CR>"
 
-        " remove comment or other chars, fill the line with tabs or spaces
+        "remove comment or other chars, fill the line with tabs or spaces
         let indent = substitute(g:Vm.indent, '[^ \t].*', '', 'g')
         call setline('.', indent . ' ')
 

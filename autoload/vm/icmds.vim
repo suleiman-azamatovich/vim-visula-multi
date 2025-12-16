@@ -142,13 +142,13 @@ fun! vm#icmds#return() abort
 
         "we also consider at EOL cursors that have trailing spaces after them
         "if not at EOL, CR will cut the line and carry over the remaining text
-        let at_eol = match(strpart(rline, r.a-1, len(rline)), '\s*$') == 0
+        " let at_eol = match(strpart(rline, r.a-1, len(rline)), '\s*$') == 0
 
         "if carrying over some text, delete it now, for better indentexpr
         "otherwise delete the trailing spaces that would be left at EOL
-        if !at_eol  | keepjumps normal! d$
-        else        | keepjumps normal! "_d$
-        endif
+        " if !at_eol  | keepjumps normal! d$
+        " else        | keepjumps normal! "_d$
+        " endif
 
         "append a line and get the indent
         " noautocmd exe "silent keepjumps normal! o\<C-R>=<SID>get_indent()\<CR>"

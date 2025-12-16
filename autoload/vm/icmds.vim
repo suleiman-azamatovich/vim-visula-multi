@@ -151,7 +151,7 @@ fun! vm#icmds#return() abort
         endif
 
         "append a line and get the indent
-        noautocmd exe "silent keepjumps normal! o\<C-R>=<SID>get_indent()\<CR>"
+        " noautocmd exe "silent keepjumps normal! o\<C-R>=<SID>get_indent()\<CR>"
 
         "fill the line with tabs or spaces, according to the found indent
         "an extra space must be added, if not carrying over any text
@@ -188,7 +188,7 @@ fun! vm#icmds#insert_line(above) abort
     for r in s:R()
         "append a line below or above
         call cursor(r.l, r.a)
-        noautocmd exe "silent keepjumps normal!" (a:above ? 'O' : 'o').""
+        noautocmd exe "silent keepjumps normal!" (a:above ? 'O' : 'o')."\<C-R>=<SID>get_indent()\<CR>"
 
         "remove comment or other chars, fill the line with tabs or spaces
         let indent = substitute(g:Vm.indent, '[^ \t].*', '', 'g')

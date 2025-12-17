@@ -146,12 +146,12 @@ fun! vm#icmds#return() abort
 
         "if carrying over some text, delete it now, for better indentexpr
         "otherwise delete the trailing spaces that would be left at EOL
-        if !at_eol  | keepjumps normal! 
-        else        | keepjumps normal! 
+        if !at_eol  | keepjumps normal! i
+        else        | keepjumps normal! i
         endif
 
         "append a line and get the indent
-        " noautocmd exe "silent keepjumps normal! o\<C-R>=<SID>get_indent()\<CR>"
+        noautocmd exe "silent keepjumps normal! o\<C-R>=<SID>get_indent()\<CR>"
 
         "fill the line with tabs or spaces, according to the found indent
         "an extra space must be added, if not carrying over any text
